@@ -9,7 +9,8 @@
       tablet: new Deps.Dependency,
       phone: new Deps.Dependency,
       desktop: new Deps.Dependency,
-      bot: new Deps.Dependency
+      bot: new Deps.Dependency,
+      wechat: new Deps.Dependency
     }
 
     this._suffix = {
@@ -17,7 +18,8 @@
       tablet: '_tablet',
       phone: '_phone',
       desktop: '_desktop',
-      bot: '_bot'
+      bot: '_bot',
+      wechat: '_wechat'
     }
 
     this.emptyUserAgentDeviceType = 'desktop';
@@ -56,6 +58,10 @@
     this.setSuffix('bot', suffix);
   }
 
+  Device.prototype.setWechatSuffix = function(suffix) {
+    this.setSuffix('wechat', suffix);
+  }
+
   /*
    * Getting Suffixes
    */
@@ -83,6 +89,10 @@
 
   Device.prototype.BotSuffix = function() {
     return getSuffix('bot');
+  }
+
+  Device.prototype.WechatSuffix = function() {
+    return getSuffix('wechat');
   }
 
   /*
@@ -124,6 +134,10 @@
     this.setPreference('bot');
   }
 
+  Device.prototype.preferWechat = function() {
+    this.setPreference('wechat');
+  }
+
   /*
    * Getting Type
    */
@@ -157,6 +171,10 @@
     return this.isType('bot');
   };
 
+  Device.prototype.isWechat = function() {
+    return this.isType('wechat');
+  };
+
   /*
    * Automatically detect the type
    * Run when code first executes, can be run again later.
@@ -179,7 +197,9 @@
         return options.emptyUserAgentDeviceType||'desktop';
       }
 
-      if (ua.match(/GoogleTV|SmartTV|Internet TV|NetCast|NETTV|AppleTV|boxee|Kylo|Roku|DLNADOC|CE\-HTML/i)) {
+      if (ua.match(/MicroMessenger/i)) {
+        return 'wechat';
+      } else if (ua.match(/GoogleTV|SmartTV|Internet TV|NetCast|NETTV|AppleTV|boxee|Kylo|Roku|DLNADOC|CE\-HTML/i)) {
         // if user agent is a smart TV - http://goo.gl/FocDk
         return 'tv';
       } else if (ua.match(/Xbox|PLAYSTATION 3|Wii/i)) {

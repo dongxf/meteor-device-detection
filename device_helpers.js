@@ -33,6 +33,9 @@ if (typeof UI !== 'undefined') {
   /*
    * Device Type Helpers
    */
+  UI.registerHelper('isWechat', function() {
+    return Meteor.Device.isWechat();
+  });
   UI.registerHelper('isTV', function() {
     return Meteor.Device.isTV();
   });
@@ -48,9 +51,8 @@ if (typeof UI !== 'undefined') {
   UI.registerHelper('isBot', function() {
     return Meteor.Device.isBot();
   });
-
   UI.registerHelper('device_type', function() {
     return Meteor.Device.type();
   });
-}
 
+}
