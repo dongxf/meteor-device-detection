@@ -1,5 +1,7 @@
 # Meteor Device-Detection
 
+This version is forked from original meteor device-detection and add wechat detection
+
 Meteor Device-Detection is a smart package which features client-side device type detection & template switching with optional [meteor-router](https://github.com/tmeasday/meteor-router/) support.
 
 An example which uses this package can be found [on github](https://github.com/Mystor/meteor-device-detection-example/), and can be seen in action at [device-detection.meteor.com](http://device-detection.meteor.com).
@@ -9,7 +11,7 @@ An example which uses this package can be found [on github](https://github.com/M
 Device-Detection is on [Atmosphere](http://atmosphere.meteor.com/), so you can install it very easily with [Meteorite](https://github.com/oortcloud/meteorite/).
 
 ``` sh
-$ mrt add device-detection
+$ meteor add device-detection
 ```
 
 > NOTE: Device-Detection has been updated to support 0.8.0 and Blaze. It's helpers will no longer function correctly on older versions of Meteor running Spark.
